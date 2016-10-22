@@ -1,6 +1,7 @@
 package main
 
 import "testing"
+import "math"
 
 func TestSqrt(t *testing.T) {
 
@@ -12,6 +13,8 @@ func TestSqrt(t *testing.T) {
 	tests := []args {
 		{ 4, 2 },
 		{ 9, 3 },
+		{ 7, math.Sqrt(7) },
+		{ 192, math.Sqrt(192) },
 	}
 
 	for _, item := range tests {

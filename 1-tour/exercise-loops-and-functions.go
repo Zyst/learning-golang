@@ -6,10 +6,7 @@ import (
 )
 
 func compareEpsilon(epsilon, previous, current float64) bool {
-	if math.Abs(previous-current) < epsilon {
-		return false
-	}
-	return true
+	return !(math.Abs(previous-current) < epsilon)
 }
 
 func Sqrt(x float64) float64 {
