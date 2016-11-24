@@ -1,4 +1,4 @@
-package rotreader
+package main
 
 import (
 	"io"
@@ -11,22 +11,24 @@ type rot13Reader struct {
 }
 
 /**
- * This basically compares letter ASCII codes (Gotten from here: http://www.ascii-code.com/)
+ * This basically compares the byte letter code with the relevant runes
  * If it's between A and M we return the number + 13, from N-Z we return the number - 13
  *
  * We also do the same for a-m and n-z. Finally, we have a fallthrough that returns b+13
  */
 func rot13(b byte) byte {
-	if b >= 65 && b <= 77 {
+	// I'm aware this can be chained with an OR to make it two lines,
+	// but I think it's more readable this way
+	if b >= 'A' && b <= 'M' {
 		return b + 13
-	} else if b >= 78 && b <= 90 {
+	} else if b >= 'N' && b <= 'Z' {
 		return b - 13
-	} else if b >= 97 && b <= 109 {
+	} else if b >= 'a' && b <= 'm' {
 		return b + 13
-	} else if b >= 110 && b <= 122 {
+	} else if b>= 'n' && b <= 'z' {
 		return b - 13
 	}
-	return b + 13
+	return b
 }
 
 func (rot rot13Reader) Read(data []byte) (n int, err error) {
@@ -48,6 +50,6 @@ func (rot rot13Reader) Read(data []byte) (n int, err error) {
 func main() {
 	s := strings.NewReader("Lbh penpxrq gur pbqr!")
 	r := rot13Reader{s}
-	// You-cracked-the-code.
+	// You cracked the code!
 	io.Copy(os.Stdout, &r)
 }
