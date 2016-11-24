@@ -14,7 +14,7 @@ type rot13Reader struct {
  * This basically compares the byte letter code with the relevant runes
  * If it's between A and M we return the number + 13, from N-Z we return the number - 13
  *
- * We also do the same for a-m and n-z. Finally, we have a fallthrough that returns b+13
+ * We also do the same for a-m and n-z. Finally, we have a fallthrough that returns b
  */
 func rot13(b byte) byte {
 	// I'm aware this can be chained with an OR to make it two lines,
