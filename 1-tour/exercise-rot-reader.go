@@ -25,7 +25,7 @@ func rot13(b byte) byte {
 		return b - 13
 	} else if b >= 'a' && b <= 'm' {
 		return b + 13
-	} else if b>= 'n' && b <= 'z' {
+	} else if b >= 'n' && b <= 'z' {
 		return b - 13
 	}
 	return b
