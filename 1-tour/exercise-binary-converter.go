@@ -25,24 +25,8 @@ func binaryConverter(decimal int) (binary []byte, err error) {
 
 	result := make([]byte, power)
 
-	// We go decreasingly, from the last element to the first element
-	for index := len(result); index > 0; index-- {
-    // If the current Power is larger than the decimal
-		if i := math.Pow(2, float64(index)); i < float64(decimal) {
-      // We subtract the current power from decimal
-      fmt.Printf("Power val is: %v, Decimal is: %v\n", i, decimal)
-      decimal -= int(i)
-      fmt.Printf("Power val is: %v, Decimal is: %v\n", i, decimal)
-      fmt.Printf("Index is: %d\n\n", index-1)
-
-      // This bit should be a
-			result[index-1] = 1
-		} else {
-      fmt.Printf("Power val is: %v, Decimal is: %v\n", i, decimal)
-      fmt.Printf("Index is: %d\n\n", index-1)
-      result[index-1] = 0
-    }
-	}
+	// Restarting the meat of the for, I think I'll only grow more confused otherwise
+	// When the soil is salted, move.
 
 	return result, nil
 }
