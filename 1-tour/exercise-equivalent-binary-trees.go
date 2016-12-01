@@ -14,7 +14,7 @@ func Walk(t *tree.Tree, ch chan int) {
 	if t.Right != nil {
 		Walk(t.Right, ch)
 	}
-	// This sends values to the tree!
+	// This sends values to the channel!
 	ch <- t.Value
 }
 
@@ -43,12 +43,16 @@ func Same(t1, t2 *tree.Tree) bool {
 		}
 	}
 
+	// This helps me visualize it and I could've removed it afterwards,
+	// But I like how it looks
 	fmt.Println(firstCompare, secondCompare)
 
 	// If we have 0 elements left they are the same
 	return len(secondCompare) == 0
 }
 
+// Simply make an int array from a channel.
+// We hardcore the 10 because we always have 10 values in these trees
 func WalkedTreeToArray(ch chan int) []int {
 	result := make([]int, 10)
 	for index := 0; index < 10; index++ {
