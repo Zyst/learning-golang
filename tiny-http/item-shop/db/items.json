@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "name": "Steel Sword",
+      "price": 1000
+    },
+    {
+      "name": "Steel Axe",
+      "price": 800
+    },
+    {
+      "name": "Maple Bow",
+      "price": 1000
+    },
+    {
+      "name": "Maple Arrow",
+      "price": 20
+    },
+    {
+      "name": "Magic Wand",
+      "price": 2000
+    },
+    {
+      "name": "Sturdy Shield",
+      "price": 700
+    }
+  ]
+}
