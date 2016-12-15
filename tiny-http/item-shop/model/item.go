@@ -2,9 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"sync"
-	"errors"
 )
 
 // Our "Database" file
@@ -47,17 +47,36 @@ func (item *Item) GetByID(id int) (Item, error) {
 		return Item{}, err
 	}
 
-  for _, itm := range items {
-    if itm.ID == id {
-      return itm, nil
-    }
-  }
-  return Item{}, errors.New("I cannot give you the item with that ID traveler," +
-    " my strongest items would kill you")
+	for _, itm := range items {
+		if itm.ID == id {
+			return itm, nil
+		}
+	}
+	return Item{}, errors.New("I cannot give you the item with that ID traveler," +
+		" my strongest items would kill you")
 }
 
 // GetAll returns every item in our shop in an array,
 // and an error if something went horribly wrong
 func (item *Item) GetAll() ([]Item, error) {
-	return nil, nil
+	// We lock when doing file operations
+	itemsMutex.Lock()
+
+	// When the function is done executing we unlock
+	defer itemsMutex.Unlock()
+
+	itemData, err := ioutil.ReadFile(itemsFile)
+	if err != nil {
+		return nil, err
+	}
+
+	var items []Item
+
+	// Here while doing the json Unmarshal we pass a pointer of
+	// our items array, so items is now filled
+	if err := json.Unmarshal(itemData, &items); err != nil {
+		return nil, err
+	}
+
+  return items, nil
 }
