@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"sync"
+	"errors"
 )
 
 // Our "Database" file
@@ -12,9 +15,9 @@ const itemsFile = "../db/items.json"
 // to say. All of our operations should be "GET"
 // types, we don't really delete Items at any point
 type Item struct {
-	id    int
-	name  string
-	price int
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
+	Price int    `json:"price"`
 }
 
 // This, is a "Mutural exclusion lock" which allows us to
@@ -25,10 +28,32 @@ var itemsMutex = new(sync.Mutex)
 // GetByID returns the item bound to the id passed
 // to the function
 func (item *Item) GetByID(id int) (Item, error) {
+	// We lock when doing file operations
+	itemsMutex.Lock()
 
-  sowrd := Item{999, "Sowrd", 5}
+	// When the function is done executing we unlock
+	defer itemsMutex.Unlock()
 
-	return sowrd, nil
+	itemData, err := ioutil.ReadFile(itemsFile)
+	if err != nil {
+		return Item{}, err
+	}
+
+	var items []Item
+
+	// Here while doing the json Unmarshal we pass a pointer of
+	// our items array, so items is now filled
+	if err := json.Unmarshal(itemData, &items); err != nil {
+		return Item{}, err
+	}
+
+  for _, itm := range items {
+    if itm.ID == id {
+      return itm, nil
+    }
+  }
+  return Item{}, errors.New("I cannot give you the item with that ID traveler," +
+    " my strongest items would kill you")
 }
 
 // GetAll returns every item in our shop in an array,

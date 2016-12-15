@@ -23,14 +23,15 @@ func TestItem_GetByID(t *testing.T) {
 	}{
 		{"Get Sword", fields{}, args{1}, Item{1, "Steel Sword", 1000}, false},
 		{"Get Axe", fields{}, args{2}, Item{2, "Steel Axe", 800}, false},
-		{"Get Error", fields{}, args{100}, Item{}, true},
+		{"Get Error", fields{}, args{999}, Item{}, true},
+		{"Get Negative Error", fields{}, args{-10029}, Item{}, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			item := &Item{
-				id:    tt.fields.id,
-				name:  tt.fields.name,
-				price: tt.fields.price,
+				ID:    tt.fields.id,
+				Name:  tt.fields.name,
+				Price: tt.fields.price,
 			}
 			got, err := item.GetByID(tt.args.id)
 			if (err != nil) != tt.wantErr {
@@ -61,9 +62,9 @@ func TestItem_GetAll(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			item := &Item{
-				id:    tt.fields.id,
-				name:  tt.fields.name,
-				price: tt.fields.price,
+				ID:    tt.fields.id,
+				Name:  tt.fields.name,
+				Price: tt.fields.price,
 			}
 			got, err := item.GetAll()
 			if (err != nil) != tt.wantErr {
