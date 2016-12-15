@@ -22,6 +22,8 @@ func TestItem_GetByID(t *testing.T) {
 		wantErr bool
 	}{
 		{"Get Sword", fields{}, args{1}, Item{1, "Steel Sword", 1000}, false},
+		{"Get Axe", fields{}, args{2}, Item{2, "Steel Axe", 800}, false},
+		{"Get Error", fields{}, args{100}, Item{}, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
