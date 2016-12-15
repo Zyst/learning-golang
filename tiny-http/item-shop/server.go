@@ -6,12 +6,10 @@ import (
 	"sync"
 )
 
-const itemsFile = "db/items.json"
 const purchasesFile = "db/purchases.json"
 
 // This is used so we can edit files without worrying about
 // multiple API calls
-var itemsMutex = new(sync.Mutex)
 var purchasesMutex = new(sync.Mutex)
 
 func main() {
