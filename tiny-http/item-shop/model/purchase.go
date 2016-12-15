@@ -24,9 +24,11 @@ type Purchase struct {
 // and do some bad stuff!
 var purchasesMutex = new(sync.Mutex)
 
+var test = Purchase{90, nil, 100}
+
 // GetByID lets us grab a specific purchase using its ID
 func (purchase *Purchase) GetByID(id int) (Purchase, error) {
-	return nil, nil
+	return test, nil
 }
 
 // GetAll grabs every purchase in our database and returns it
@@ -36,5 +38,5 @@ func (purchase *Purchase) GetAll() ([]Purchase, error) {
 
 // Create saves a purchase to the database, and returns it
 func (purchase *Purchase) Create(p Purchase) (Purchase, error) {
-	return nil, nil
+	return test, nil
 }

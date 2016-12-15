@@ -25,7 +25,10 @@ var itemsMutex = new(sync.Mutex)
 // GetByID returns the item bound to the id passed
 // to the function
 func (item *Item) GetByID(id int) (Item, error) {
-	return nil, nil
+
+  sowrd := Item{999, "Sowrd", 5}
+
+	return sowrd, nil
 }
 
 // GetAll returns every item in our shop in an array,
