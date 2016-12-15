@@ -1,27 +1,38 @@
 {
   "items": [
     {
+      "id": 1,
       "name": "Steel Sword",
       "price": 1000
     },
     {
+      "id": 2,
       "name": "Steel Axe",
       "price": 800
     },
     {
+      "id": 3,
       "name": "Maple Bow",
       "price": 1000
     },
     {
+      "id": 4,
       "name": "Maple Arrow",
       "price": 20
     },
     {
+      "id": 5,
       "name": "Magic Wand",
       "price": 2000
     },
     {
+      "id": 6,
       "name": "Sturdy Shield",
+      "price": 700
+    },
+    {
+      "id": 7,
+      "name": "Steel Dagger",
       "price": 700
     }
   ]
