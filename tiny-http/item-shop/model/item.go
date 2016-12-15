@@ -52,6 +52,7 @@ func (item *Item) GetByID(id int) (Item, error) {
 			return itm, nil
 		}
 	}
+
 	return Item{}, errors.New("I cannot give you the item with that ID traveler," +
 		" my strongest items would kill you")
 }
