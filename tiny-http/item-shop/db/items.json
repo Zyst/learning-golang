@@ -26,12 +26,12 @@
   },
   {
     "id": 6,
-    "name": "Sturdy Shield",
+    "name": "Oak Shield",
     "price": 700
   },
   {
     "id": 7,
     "name": "Steel Dagger",
-    "price": 700
+    "price": 500
   }
-]
+
