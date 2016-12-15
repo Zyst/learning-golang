@@ -78,5 +78,5 @@ func (item *Item) GetAll() ([]Item, error) {
 		return nil, err
 	}
 
-  return items, nil
+	return items, nil
 }

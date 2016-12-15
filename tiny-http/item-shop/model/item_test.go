@@ -57,7 +57,20 @@ func TestItem_GetAll(t *testing.T) {
 		want    []Item
 		wantErr bool
 	}{
-	// TODO: Add test cases.
+	  {
+			"Gotta buy 'em all!",
+			fields{},
+			[]Item{
+				Item{1, "Steel Sword", 1000},
+				Item{2, "Steel Axe", 800},
+				Item{3, "Maple Bow", 1000},
+				Item{4, "Maple Arrow", 20},
+				Item{5, "Magic Wand", 2000},
+				Item{6, "Oak Shield", 700},
+				Item{7, "Steel Dagger", 500},
+			},
+			false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
