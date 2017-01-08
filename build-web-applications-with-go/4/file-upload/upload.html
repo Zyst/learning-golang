@@ -1,0 +1,21 @@
+<html>
+
+<head>
+  <title>Upload demo</title>
+  <style>
+    h2, label {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Upload demo</h2>
+  <form enctype="multipart/form-data" action="/upload" method="POST">
+    <input type="file" name="uploadFile" />
+    <input type="hidden" name="token" value="{{.}}" />
+    <input type="submit" value="upload" />
+  </form>
+</body>
+
+</html>
