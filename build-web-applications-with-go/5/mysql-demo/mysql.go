@@ -14,7 +14,7 @@ func checkErr(err error) {
 }
 
 func main() {
-	db, err := sql.Open("mysql", "root@/test?charset=utf8")
+	db, err := sql.Open("mysql", "root@/sys?charset=utf8")
 	defer db.Close()
 
 	checkErr(err)
