@@ -23,13 +23,13 @@ func main() {
 	statement, err := db.Prepare("INSERT userinfo SET username=?,departname=?,created=?")
 	checkErr(err)
 
-	res, err := statement.Exec("Erick", "Romero", "1992-07-03")
+	res, err := statement.Exec("Erick", "Programming", "1992-07-03")
 	checkErr(err)
 
 	id, err := res.LastInsertId()
 	checkErr(err)
 
-	fmt.Println(id)
+	fmt.Println("Created", id)
 
 	// Update
 	statement, err = db.Prepare("update userinfo set username=? where uid=?")
@@ -41,7 +41,7 @@ func main() {
 	affected, err := res.RowsAffected()
 	checkErr(err)
 
-	fmt.Println(affected)
+	fmt.Println("Updated", affected)
 
 	// Query
 	rows, err := db.Query("SELECT * FROM userinfo")
@@ -56,10 +56,10 @@ func main() {
 		err = rows.Scan(&uid, &username, &department, &created)
 		checkErr(err)
 
-		fmt.Println(uid)
-		fmt.Println(username)
-		fmt.Println(department)
-		fmt.Println(created)
+		fmt.Println("UID", uid)
+		fmt.Println("Username", username)
+		fmt.Println("Department", department)
+		fmt.Println("Created", created)
 	}
 
 	// Delete
@@ -72,5 +72,5 @@ func main() {
 	affected, err = res.RowsAffected()
 	checkErr(err)
 
-	fmt.Println(affected)
+	fmt.Println("Deleted", affected)
 }
